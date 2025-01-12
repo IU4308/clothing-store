@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import ItemCard from './ItemCard'
 import Cart from './Cart'
-import { products } from './assets/data'
+import { products } from '../public/data.js'
 import { useMemo } from 'react'
 
 const filterProducts = (search, selectedCategory) => {
