@@ -23,39 +23,48 @@ function App() {
     setSelectedCategory(category)
   }
 
+  // const handleAddItems = useCallback((newItem) => {
+  //   setSelectedItems(
+  //     [
+  //       { ...newItem, count: 1 },
+  //       ...selectedItems,
+  //     ]
+  //   )
+  // }, [selectedItems])
+
   const handleAddItems = useCallback((newItem) => {
-    setSelectedItems(
-      [
-        { ...newItem, count: 1 },
-        ...selectedItems,
-      ]
-    )
-  }, [selectedItems])
+    setSelectedItems((prevItems) => [
+      ...prevItems,
+      { ...newItem, count: 1 }
+    ])
+  }, [])
 
   const handleChangeCount = useCallback((id, operation) => {
-    setSelectedItems(selectedItems.map(item => {
-      if (item.id === id) {
-        if (operation === 'increment') {
-          return {
-            ...item,
-            count: item.count + 1
+    setSelectedItems(prevItems =>
+      prevItems.map(item => {
+        if (item.id === id) {
+          if (operation === 'increment') {
+            return {
+              ...item,
+              count: item.count + 1
+            }
+          } else if (operation === 'decrement') {
+            return {
+              ...item,
+              count: item.count - 1
+            }
           }
-        } else if (operation === 'decrement') {
-          return {
-            ...item,
-            count: item.count - 1
-          }
+        } else {
+          return item
         }
-      } else {
-        return item
-      }
-    }))
-  }, [selectedItems])
+      }))
+  }, [])
 
 
   const handleRemove = useCallback((id) => {
-    setSelectedItems(selectedItems.filter(selectedItem => selectedItem.id !== id))
-  }, [selectedItems])
+    setSelectedItems(prevItems =>
+      prevItems.filter(selectedItem => selectedItem.id !== id))
+  }, [])
 
   const handleClear = useCallback(() => {
     setSelectedItems([])

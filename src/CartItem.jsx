@@ -25,7 +25,7 @@ const CartItem = ({
                             disabled={count === 1}
                             className={count === 1 ? 'change-number-btn-disabled' : 'change-number-btn'}
                             onClick={() => {
-                                if (count >= 1) {
+                                if (count > 1) {
                                     onChangeCount(id, 'decrement')
                                 }
                             }}
