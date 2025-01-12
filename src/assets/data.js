@@ -4,7 +4,7 @@ export const products = [
         id: 0,
         title: "Jacket 1",
         price: 50.00,
-        image: "src/assets/jacket1.jpg",
+        image: "/src/assets/jacket1.jpg",
         alt: "jacket1",
         category: "jackets"
     },
