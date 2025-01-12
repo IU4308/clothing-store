@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { categories } from '../public/data.js'
+import { categories } from './constans/data'
 
 const Category = ({ category, selectedCategory, onSelect }) => {
     const isSelected = selectedCategory === category.title
